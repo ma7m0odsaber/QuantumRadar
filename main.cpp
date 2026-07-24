@@ -29,6 +29,8 @@ struct fine
     vector<violation> v;
     observation obs;
     int amount;
+};
+
 class Irule
 {
 public:
@@ -128,4 +130,9 @@ int main()
         {"TRK-2005", "2026-7-24", car_type::Truck, 140, true}
     };
 
+    vector<unique_ptr<Irule> > rules;
+    rules.push_back(make_unique<truck_speed>());
+    rules.push_back(make_unique<private_speed>());
+    rules.push_back(make_unique<seatbelt>());
+    return 0;
 }
