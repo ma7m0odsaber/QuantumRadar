@@ -2,13 +2,20 @@
 
 using namespace std;
 
-struct rule
+class Irule
 {
-    string name;
-    string car_type;
-    int speed;
-    bool seat_belt;
-    int fees;
+public:
+    virtual ~Irule() = default;
+    virtual bool check_rule() = 0;
+};
+
+class truck_speed: public Irule
+{
+public:
+    bool check_rule() override
+    {
+
+    }
 };
 
 struct observation
