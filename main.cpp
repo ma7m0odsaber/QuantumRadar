@@ -129,5 +129,10 @@ int main()
         // Truck extremely over the speed limit
         {"TRK-2005", "2026-7-24", car_type::Truck, 140, true}
     };
+
+    vector<unique_ptr<Irule> > rules;
+    rules.push_back(make_unique<truck_speed>());
+    rules.push_back(make_unique<private_speed>());
+    rules.push_back(make_unique<seatbelt>());
     return 0;
 }
