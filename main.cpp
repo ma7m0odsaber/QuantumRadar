@@ -18,6 +18,17 @@ struct observation
     bool seat_belt;
 };
 
+struct violation
+{
+    string description;
+    int fees;
+};
+
+struct fine
+{
+    vector<violation> v;
+    observation obs;
+    int amount;
 class Irule
 {
 public:
