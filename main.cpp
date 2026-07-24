@@ -1,18 +1,64 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+using namespace std;
+
+enum class car_type
+{
+    Private,
+    Truck,
+    Bus
+};
+
+struct observation
+{
+    string plate_num;
+    string date;
+    car_type car;
+    int speed;
+    bool seat_belt;
+};
+
+class Irule
+{
+public:
+    virtual ~Irule() = default;
+    virtual bool check_violation(observation obs) = 0;
+};
+
+class truck_speed: public Irule
+{
+public:
+    bool check_violation(observation obs) override
+    {
+        if (obs.car == car_type::Truck && obs.speed > 60)
+            return true;
+        return false;
+    }
+};
+
+class private_speed: public Irule
+{
+public:
+    bool check_violation(observation obs) override
+    {
+        if (obs.car == car_type::Private && obs.speed > 80)
+            return true;
+        return false;
+    }
+};
+
+class seatbelt: public Irule
+{
+public:
+    bool check_violation(observation obs) override
+    {
+        if (!obs.seat_belt)
+            return true;
+        return false;
+    }
+};
+
 int main()
 {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
 
-    for (int i = 1; i <= 5; i++)
-    {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-    }
-
-    return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }
