@@ -29,6 +29,8 @@ struct fine
     vector<violation> v;
     observation obs;
     int amount;
+};
+
 class Irule
 {
 public:
@@ -127,5 +129,5 @@ int main()
         // Truck extremely over the speed limit
         {"TRK-2005", "2026-7-24", car_type::Truck, 140, true}
     };
-
+    return 0;
 }
